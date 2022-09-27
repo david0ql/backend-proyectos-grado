@@ -4,7 +4,8 @@
   "description": "<h1 align=\"center\">Hi 👋, I'm Jhankk</h1> <h3 align=\"center\">A passionate frontend developer from Colombia</h3>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,10 @@
   },
   "homepage": "https://github.com/david0ql/backend-proyectos-grado#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.20",
     "socket.io": "^4.5.2"
   }
 }

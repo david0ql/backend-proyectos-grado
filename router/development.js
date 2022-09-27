@@ -5,13 +5,17 @@ const development = express.Router();
 development.use(function timeLog(req, res, next) {
   next();
 });
-// define the home page route
-development.get('/', function(req, res) {
+
+development.get('/ideasTomadas', function(req, res) {
   res.send('Birds home page');
 });
-// define the about route
-development.get('/about', function(req, res) {
+
+development.get('/obtenerIdeas', function(req, res) {
   res.send('About birds');
+});
+
+development.get('/validacionUsuario', function(req, res) {
+    res.send('About birds');
 });
 
 module.exports = {

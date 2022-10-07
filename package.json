@@ -20,6 +20,7 @@
   "homepage": "https://github.com/david0ql/backend-proyectos-grado#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20",

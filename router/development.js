@@ -1,7 +1,7 @@
 const express = require('express');
-const UserValidation = require('../classes/response_user_validation');
 const development = express.Router();
-const { validacionUsuario, obtenerIdea, ideaTomada } = require('../helpers/helpers');
+const { check } = require('express-validator');
+const { validarCampos } = require('../middlewares/validar-campos');
 const { myValidacion } = require('../models/ideas_tomadas_get');
 // Our middleware to verify correct Entity and data
 
@@ -19,10 +19,12 @@ development.get('/obtenerIdeas', async (req, res) => {
   res.json(rta);
 });
 
-development.get('/validacionUsuario', async (req, res) => {
-const validacion = await myValidacion(req.query.email);
-res.json(validacion)
-});
+development.get('/validacionUsuario',
+[
+  check('email', 'El correo es obligatorio').isEmail(),
+  validarCampos
+],
+myValidacion);
 
 module.exports = {
     development

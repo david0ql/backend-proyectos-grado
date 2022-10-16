@@ -21,7 +21,7 @@ development.get('/obtenerIdeas', async (req, res) => {
 
 development.get('/validacionUsuario',
 [
-  check('email', 'El correo es obligatorio').isEmail(),
+  check('email', 'El correo es obligatorio').isEmail(),   
   validarCampos
 ],
 myValidacion);

@@ -1,4 +1,4 @@
-const { connection } = require ("../conexion/conexion") 
+const { connection } = require ("../../conexion/conexion") 
 
 const deleteCart = (id_cart) => {
     return new Promise((resolve, reject) => {

@@ -71,8 +71,6 @@ development.post ('/favorites', async(req, res) => {
   res.json (rta);
 })
 
-
-
 module.exports = {
     development
 }

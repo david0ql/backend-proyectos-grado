@@ -4,13 +4,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { urlencoded } = require('express');
 const { development } = require ('./router/development');
-const { production } = require ('./router/production');
 
 app.use(bodyParser.json())
    .use(cors())
    .use(urlencoded({extended : true}))
    .use('/development', development)
-   .use('/production', production)
 
 const server = require('http').createServer(app);
 

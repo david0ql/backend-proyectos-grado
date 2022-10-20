@@ -1,17 +1,9 @@
 const express = require('express');
 const development = express.Router();
 const { check } = require('express-validator');
-const { obtenerCart } = require('../helpers/helpers');
-const { insertCart } = require('../helpers/helpers');
-const { deleteCart } = require('../helpers/helpers');
-//
-const { obtenerFav } = require('../helpers/helpers');
-const { mrInsertFavs } = require('../helpers/helpers');
-const { deleteFav } = require('../helpers/helpers');
-//
+const { obtenerCart,insertCart,deleteCart, obtenerFav, mrInsertFavs, deleteFav } = require('../helpers/helpers');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { myValidacion } = require('../models/ideas_tomadas_get');
-const { todasIdeas } = require('../models/todas_ideas_get');
+const { myValidacion, todasIdeas } = require('../models/models');
 // Our middleware to verify correct Entity and data
 
 development.use(function timeLog(req, res, next) {

@@ -1,4 +1,4 @@
-const { connection } = require("../conexion/conexion")
+const { connection } = require ("../../conexion/conexion") 
 
 const deleteFav = (id_ideaFav) => {
     return  new Promise((resolve, reject) => {

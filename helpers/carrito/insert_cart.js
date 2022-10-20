@@ -1,4 +1,4 @@
-const { connection } = require ("../conexion/conexion") 
+const { connection } = require ("../../conexion/conexion") 
 
 const insertCart = (email, id_idea) => {
     return new Promise((resolve, reject) => {

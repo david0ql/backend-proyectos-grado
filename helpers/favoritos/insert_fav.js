@@ -1,4 +1,4 @@
-const { connection } = require("../conexion/conexion");
+const { connection } = require ("../../conexion/conexion") 
 const validation = (correo_estudiante) => {
     return new Promise((resolve, reject) => {
         connection.query(`SELECT ideas_favoritas.* 

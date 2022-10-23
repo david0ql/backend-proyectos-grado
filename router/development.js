@@ -1,7 +1,7 @@
 const express = require('express');
 const development = express.Router();
 const { check } = require('express-validator');
-const { obtenerCart,insertCart,deleteCart, obtenerFav, mrInsertFavs, deleteFav } = require('../helpers/helpers');
+const { obtenerCart,mrInsertCart,deleteCart, obtenerFav, insertFav, deleteFav } = require('../helpers/helpers');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { myValidacion, todasIdeas } = require('../models/models');
 // Our middleware to verify correct Entity and data
@@ -38,7 +38,7 @@ res.json(rta_cart);
 });
 
 development.post ('/cart', async (req,res)=> {
-const rta = await insertCart(req.body.correo, req.body.id_idea );
+const rta = await mrInsertCart(req.body.correo, req.body.id_idea );
 res.json(rta);
 });
 
@@ -59,7 +59,7 @@ development.delete('/favorites', async(req, res) =>{
 })
 
 development.post ('/favorites', async(req, res) => { 
-  const rta = await mrInsertFavs(req.body.correo, req.body.id_idea)
+  const rta = await insertFav(req.body.correo, req.body.id_idea)
   res.json (rta);
 })
 

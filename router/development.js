@@ -1,9 +1,9 @@
 const express = require('express');
 const development = express.Router();
 const { check } = require('express-validator');
-const { obtenerCart,mrInsertCart,deleteCart, obtenerFav, insertFav, deleteFav, ideaTomada } = require('../helpers/helpers');
+//const { obtenerCart,mrInsertCart,deleteCart, obtenerFav, insertFav, deleteFav, ideaTomada } = require('../helpers/helpers');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { myValidacion, todasIdeas, ideaTomadaModel, cartModel, cartModel_post, cartModel_delete, favModel, favMode_delete, favModel_insert } = require('../models/models');
+const { myValidacion, todasIdeas, todasProfesor, ideaTomadaModel, cartModel, cartModel_post, cartModel_delete, favModel, favMode_delete, favModel_insert } = require('../models/models');
 // Our middleware to verify correct Entity and data
 
 development.use(function timeLog(req, res, next) {
@@ -11,81 +11,91 @@ development.use(function timeLog(req, res, next) {
 });
 
 development.get('/ideasTomadas', [
-  check ('correo', 'El correo es obligatorio').isEmail(),
+  check('correo', 'El correo es obligatorio').isEmail(),
   validarCampos,
 ],
-ideaTomadaModel);
+  ideaTomadaModel);
 
 
 development.get('/obtenerIdeas',
-[
-check ('correo', 'El correo es obligatorio').isEmail(),
-validarCampos
-],
-todasIdeas);
+  [
+    check('correo', 'El correo es obligatorio').isEmail(),
+    validarCampos
+  ],
+  todasIdeas);
+  
+/* development.get('/obtenerIdeasProfesor',
+  [
+    check('correo', 'El correo es obligatorio').isEmail(),
+    validarCampos
+  ],
+  todasIdeas);
 
+
+ */
 
 development.get('/validacionUsuario',
-[
-  check('correo', 'El correo es obligatorio').isEmail(),   
-  validarCampos
-],
-myValidacion);
+  [
+    check('correo', 'El correo es obligatorio').isEmail(),
+    validarCampos
+  ],
+  myValidacion);
 
 //CART 
 
 development.get('/cart',
-[
-  check('email', 'El correo es obligatorio').isEmail(),
-  validarCampos
-],
-cartModel);
-
-development.post ('/cart', 
-[
-check('email', 'El correo es obligatorio').isEmail(),
-  validarCampos
-],
-cartModel_post);
+  [
+    check('email', 'El correo es obligatorio').isEmail(),
+    validarCampos
+  ],
+  cartModel);
 
 
-development.delete ('/cart', 
-[
+development.post('/cart',
+  [
+    check('email', 'El correo es obligatorio').isEmail(),
+    validarCampos
+  ],
+  cartModel_post);
 
-  check('carrito_id', 'El identificador carrito es necesario ').isNumeric().isEmpty().not(),
-  validarCampos
 
-],
-cartModel_delete);
+development.delete('/cart',
+  [
+
+    check('carrito_id', 'El identificador carrito es necesario ').isNumeric().isEmpty().not(),
+    validarCampos
+
+  ],
+  cartModel_delete);
 
 
 //IDEAS FAV
-development.get('/favorites', 
-[
-  check('email', 'El correo es obligatorio').isEmail(),
-  validarCampos
-],
-favModel);
+development.get('/favorites',
+  [
+    check('email', 'El correo es obligatorio').isEmail(),
+    validarCampos
+  ],
+  favModel);
 
 
 development.delete('/favorites',
-[
+  [
 
-  check('carrito_id', 'El identificador carrito es necesario ').isNumeric().isEmpty().not(),
-  validarCampos
+    check('carrito_id', 'El identificador carrito es necesario ').isNumeric().isEmpty().not(),
+    validarCampos
 
-],
-favMode_delete);
+  ],
+  favMode_delete);
 
-development.post ('/favorites',
-[  
-  check('email', 'El correo es obligatorio').isEmail(), 
-  check('carrito_id', 'El identificador carrito es necesario ').isNumeric().isEmpty().not(),
-  validarCampos
+development.post('/favorites',
+  [
+    check('email', 'El correo es obligatorio').isEmail(),
+    check('carrito_id', 'El identificador carrito es necesario ').isNumeric().isEmpty().not(),
+    validarCampos
 
-],
-favModel_insert);
+  ],
+  favModel_insert);
 
 module.exports = {
-    development
+  development
 }
